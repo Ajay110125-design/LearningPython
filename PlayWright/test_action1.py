@@ -19,7 +19,15 @@ def test_checkbox(page:Page):
     page.goto("https://testautomationpractice.blogspot.com/")
     page.wait_for_timeout(5000)
     #check the specific checkbox
-    page.get_by_text("Sunday").check()
-    page.wait_for_timeout(5000)
+    #page.get_by_text("Sunday").check()
+    #page.wait_for_timeout(5000)
+    Days=page.locator("//*[@for='days']/parent::div/child::div/child::label")
+    namesofday=Days.all_text_contents()
+    print(namesofday)
+
+
+
+
+
 
 
