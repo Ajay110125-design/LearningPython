@@ -25,6 +25,10 @@ def test_checkbox(page:Page):
     namesofday=Days.all_text_contents()
     print(namesofday)
 
+def test_checkboxs(page:Page):
+    page.goto("https://testautomationpractice.blogspot.com/")#remove this function
+
+
 
 
 
