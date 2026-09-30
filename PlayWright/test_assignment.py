@@ -1,0 +1,27 @@
+from playwright.sync_api import Page, expect
+
+def test_verify_demoweb_application(page:Page):
+   page.goto("https://demowebshop.tricentis.com/")
+   page.wait_for_timeout(5000)
+   expect(page.get_by_alt_text("Tricentis Demo Web Shop")).to_be_visible()
+   total_count=page.locator("h2>a[href*='computer']")
+   products=total_count.count()
+   print("total products: ", products)
+   expect(total_count).to_have_count(products)
+   all_products=total_count.all_text_contents()
+   first_product=total_count.first.text_content()
+   last_product = total_count.last.text_content()
+   third_product = total_count.nth(2).text_content()
+   second_product = total_count.nth(1).text_content()
+   print("first product name:", first_product)
+   print("last product name:", last_product)
+   print("second product name:", second_product)
+   print("third product name:", third_product)
+   print("All product names:", all_products)
+   links_under_footer_follow=page.locator("//*[@class='footer-menu-wrapper']/child::div[@class='column follow-us']//li")
+   total_links=links_under_footer_follow.count()
+   print("Total links: ", total_links)
+   expect(links_under_footer_follow).to_have_count(total_links)
+   Prn_all_links_names=links_under_footer_follow.all_text_contents()
+   print("Names of all links under follow us: ", Prn_all_links_names)
+
